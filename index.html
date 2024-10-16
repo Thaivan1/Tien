@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng ngày 20-10</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px; /* Chiều cao của băng rôn */
+            background-image: url('https://images.unsplash.com/photo-1556430250-7f93a7501b8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080'); /* Thay đổi URL hình ảnh tại đây */
+            background-size: cover; 
+            background-position: center; 
+            color: #FF69B4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem; 
+            white-space: nowrap; 
+            animation: slide 10s linear infinite; 
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%); 
+            }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 5rem; 
+            color: #FF69B4;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: wave 1s infinite; 
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); 
+            }
+        }
+
+        .balloons {
+            margin: 20px 0;
+            position: relative;
+            height: 200px; /* Chiều cao cho không gian bóng bay */
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: 0;
+            background-color: #FF69B4; /* Màu bóng bay */
+            width: 50px; /* Chiều rộng bóng bay */
+            height: 70px; /* Chiều cao bóng bay */
+            border-radius: 25px;
+            animation: rise 5s ease-in infinite; /* Hiệu ứng bay lên */
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: 0;
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px) translateY(-100px); /* Bay lên và sang bên */
+            }
+            100% {
+                transform: translateX(-20px) translateY(-200px); /* Bay lên và sang bên */
+            }
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 2rem; 
+            color: #333;
+        }
+
+        .fade-in-image {
+            display: none;
+            width: 60%; /* Điều chỉnh kích thước hình ảnh cho phù hợp */
+            max-width: 400px; /* Giới hạn chiều rộng tối đa */
+            margin: 20px auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10; 
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 40px; 
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative; 
+            width: 80%; 
+            max-width: 800px; 
+        }
+
+        .modal h2 {
+            color: #FF69B4;
+            margin-bottom: 15px;
+            font-size: 3rem; 
+        }
+
+        .modal img {
+            width: 60%; /* Điều chỉnh kích thước hình ảnh trong modal */
+            max-width: 300px; /* Giới hạn chiều rộng tối đa trong modal */
+            border-radius: 10px;
+            object-fit: cover; 
+        }
+
+        .modal p {
+            font-size: 2rem; 
+            color: #333;
+            margin-top: 15px; 
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 15px 30px; 
+            background-color: #FF69B4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.5rem; 
+        }
+
+        .close-btn:hover {
+            background-color: #FF1493;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 15px 30px; 
+            background-color: #FF69B4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.5rem; 
+        }
+
+        .next-btn:hover {
+            background-color: #FF1493;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem; /* Giảm kích thước chữ cho h1 */
+            }
+
+            .banner {
+                height: 60px; /* Giảm chiều cao băng rôn cho mobile */
+                font-size: 2rem; /* Giảm kích thước chữ cho băng rôn */
+            }
+
+            .modal h2 {
+                font-size: 2.5rem; /* Giảm kích thước chữ cho tiêu đề modal */
+            }
+
+            .modal p {
+                font-size: 1.5rem; /* Giảm kích thước chữ cho nội dung modal */
+            }
+
+            .close-btn, .next-btn {
+                padding: 10px 20px; /* Giảm padding cho nút đóng modal */
+                font-size: 1.2rem; /* Giảm kích thước chữ cho nút đóng modal */
+            }
+
+            .balloon {
+                width: 30px; /* Giảm chiều rộng bóng bay */
+                height: 50px; /* Giảm chiều cao bóng bay */
+            }
+
+            .fade-in-image {
+                width: 80%; /* Tăng chiều rộng hình ảnh cho mobile */
+                max-width: 300px; /* Giới hạn chiều rộng tối đa cho mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem; /* Giảm kích thước chữ cho h1 trên di động */
+            }
+
+            .modal h2 {
+                font-size: 2rem; /* Giảm kích thước chữ cho tiêu đề modal trên di động */
+            }
+
+            .modal p {
+                font-size: 1.2rem; /* Giảm kích thước chữ cho nội dung modal trên di động */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        Chúc Mừng Ngày 20-10!
+    </div>
+
+    <div class="container">
+        <h1 id="clickable-title">Nhấp vào đây để xem bất ngờ!</h1>
+        <div class="balloons">
+            <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="balloon" style="left: 30%; animation-delay: 1s;"></div>
+            <div class="balloon" style="left: 50%; animation-delay: 2s;"></div>
+            <div class="balloon" style="left: 70%; animation-delay: 3s;"></div>
+            <div class="balloon" style="left: 90%; animation-delay: 4s;"></div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <h2>Chúc mừng 20-10</h2>
+            <img src="./z5936986852568_2ab8d43526f23c4fa1713fdd5761fe47.jpg" alt="Message Image 1">
+            <p>Chào cô gái xinh đẹp</p>
+            <button class="next-btn" onclick="nextModal(1)">Tiếp theo</button>
+            <button class="close-btn" onclick="closeModal(1)">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <h2>Chúc mừng 20-10</h2>
+            <img src="./z5936986852568_2ab8d43526f23c4fa1713fdd5761fe47.jpg" alt="Message Image 2">
+            <p>Hẹn gặp bạn vào ngày 18 tháng 10 năm 2024 vào lúc 20h nha!!!</p>
+            <button class="next-btn" onclick="nextModal(2)">Tiếp theo</button>
+            <button class="close-btn" onclick="closeModal(2)">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <h2>chúc mừng 20-10</h2>
+            <img src="./z5936986852568_2ab8d43526f23c4fa1713fdd5761fe47.jpg" alt="Message Image 3">
+            <p>Chúng tôi đã chuẩn bị cho bà nhiều điều bất ngờ cho các bà!</p>
+            <button class="next-btn" onclick="nextModal(3)">Tiếp theo</button>
+            <button class="close-btn" onclick="closeModal(3)">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="modal" id="modal4">
+        <div class="modal-content">
+            <h2>Chúc mừng 20-10</h2>
+            <img src="./z5936986852568_2ab8d43526f23c4fa1713fdd5761fe47.jpg" alt="Message Image 4">
+            <p>Các bà nhớ ăn mặc thật đẹp để tận hưởng những điều bất ngờ đó!!!</p>
+            <button class="next-btn" onclick="nextModal(4)">Tiếp theo</button>
+            <button class="close-btn" onclick="closeModal(4)">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div class="modal" id="modal5">
+        <div class="modal-content">
+            <h2>Chúc mừng 20-10</h2>
+            <img src="./z5936986852568_2ab8d43526f23c4fa1713fdd5761fe47.jpg" alt="Message Image 5">
+            <p>Cuối cùng chúc các bà 20-10 thật nhiều niềm vui và nhiều tiếng cười(-.-)</p>
+            <button class="close-btn" onclick="closeModal(5)">Đóng</button>
+        </div>
+    </div>
+
+    <script>
+        const modals = document.querySelectorAll('.modal');
+
+        document.getElementById('clickable-title').addEventListener('click', () => {
+            openModal(1);
+        });
+
+        function openModal(modalIndex) {
+            modals[modalIndex - 1].style.display = 'flex';
+            setTimeout(() => {
+                modals[modalIndex - 1].style.opacity = '1';
+            }, 50);
+        }
+
+        function closeModal(modalIndex) {
+            modals[modalIndex - 1].style.opacity = '0';
+            setTimeout(() => {
+                modals[modalIndex - 1].style.display = 'none';
+            }, 300);
+        }
+
+        function nextModal(modalIndex) {
+            closeModal(modalIndex);
+            if (modalIndex < modals.length) {
+                openModal(modalIndex + 1);
+            }
+        }
+    </script>
+</body>
+</html>
